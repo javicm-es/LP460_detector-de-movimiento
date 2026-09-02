@@ -1,0 +1,13 @@
+[Unit]
+Description=Webcam streaming with ustreamer
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/ustreamer --device=/dev/video0 --format=MJPEG --resolution=1280x720 --desired-fps=30 --host=10.10.20.6 --port=8080
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
